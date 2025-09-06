@@ -92,7 +92,7 @@ check_load() {
 }
 
 get_stats() {
-  local cpu_usage=$(top -bn1 | grep "CPU(s)" | awk '{print $2}' | cut -d'%' -f1 | cut -d' ' -f1)
+  local cpu_usage=$(/usr/bin/top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 | cut -d' ' -f1)
   local ram_usage=$(free | grep Mem | awk '{printf("%.0f", $3/$2 * 100.0)}')
   local disk_usage=$(df / | tail -1 | awk '{print $5}' | cut -d'%' -f1)
   local load_1min=$(uptime | awk -F'load average:' '{print $2}' | awk -F',' '{print $1}' | xargs)
@@ -134,7 +134,7 @@ install_monitor() {
 
 show_status() {
   echo "📊 Current system state:"
-  echo "CPU: $(/usr/bin/top -bn1 | grep "CPU(s)" | awk '{print $2}' | cut -d'%' -f1 | cut -d' ' -f1)%"
+  echo "CPU: $(/usr/bin/top -bn1 | grep "Cpu(s)" | awk '{print $2}' | cut -d'%' -f1 | cut -d' ' -f1)%"
   echo "RAM: $(free | grep Mem | awk '{printf("%.0f", $3/$2 * 100.0)}')%"
   echo "Disk: $(df / | tail -1 | awk '{print $5}')"
   echo "Load: $(uptime | awk -F'load average:' '{print $2}' | awk -F',' '{print $1}' | xargs)"
