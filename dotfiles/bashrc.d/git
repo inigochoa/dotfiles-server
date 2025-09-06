@@ -1,0 +1,14 @@
+# ~/.bashrc.d/git
+
+## Functions
+### Clone a git repository and cd inside
+gclone() {
+  git clone "$1" && cd "$(basename "$1" .git)"
+}
+
+## onefetch - https://onefetch.dev/
+if command -v onefetch >/dev/null 2>&1; then
+  alias git-summary="onefetch"
+  alias git-sm="onefetch"
+  alias gsm="onefetch"
+fi

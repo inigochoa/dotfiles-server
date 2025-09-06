@@ -1,0 +1,45 @@
+# Compiled source
+*.class
+*.com
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+# Editing tools and IDEs
+[._]*.sw[a-p]
+[._]*.s[a-v][a-z]
+*~
+~*
+\#*\#
+\.#*
+.ipynb_checkpoints/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# OS generated files
+._*
+.DS_Store*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Temporary files
+*.swo
+*.swp
+*~

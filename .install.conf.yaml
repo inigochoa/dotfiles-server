@@ -1,0 +1,60 @@
+- defaults:
+    link:
+        create: true
+        force: true
+        relink: true
+
+- clean: ['~']
+
+- shell:
+    -
+        command: ../.dotbot-scripts/dnf-repositories.sh
+        description: Enable DNF repositories
+        quiet: true
+        stderr: true
+        stdout: true
+    -
+        command: ../.dotbot-scripts/sh-installs.sh
+        description: Install from shell
+        quiet: true
+        stderr: true
+        stdout: true
+
+- omnipkg:
+    - install: [
+        bat,
+        bottom,
+        eza,
+        fastfetch,
+        fd-find,
+        fzf,
+        git-delta,
+        onefetch,
+        procs,
+        zoxide
+    ]
+
+- link:
+    ## bash files
+    ~/.bashrc.d:
+    ~/.bash-preexec.sh:
+    ~/.bash_logout:
+    ~/.bash_profile:
+    ~/.bashrc:
+    ~/.scripts.d:
+
+    ## git files
+    ~/.gitconfig:
+    ~/.gitignore_global:
+
+    ## config files
+    ~/.config/atuin: config/atuin
+    ~/.config/bat: config/bat
+    ~/.config/bottom: config/bottom
+    ~/.config/fastfetch: config/fastfetch
+    ~/.config/procs: config/procs
+    ~/.config/starship.toml: config/starship.toml
+
+- shell:
+    - . $HOME/.bashrc
+    - source $HOME/.bashrc

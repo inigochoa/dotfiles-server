@@ -1,0 +1,8 @@
+[submodule ".dotbot"]
+	ignore = dirty
+	path = .dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule ".dotbot-omnipkg"]
+	ignore = dirty
+	path = .dotbot-omnipkg
+	url = https://github.com/code-maniac/dotbot-omnipkg

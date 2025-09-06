@@ -1,0 +1,47 @@
+# ~/.bashrc.d/system
+
+## Actions
+alias halt="sudo /sbin/halt"
+alias poweroff="sudo /sbin/poweroff"
+alias reboot="sudo /sbin/reboot"
+alias shutdown="sudo /sbin/shutdown"
+
+## bottom - https://github.com/ClementTsang/bottom
+if command -v btm >/dev/null 2>&1; then
+  alias htop="btm"
+  alias top="btm"
+fi
+
+## CPU
+alias cpuinfo="lscpu"
+if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
+  alias cputemp="echo $(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))ºC"
+fi
+alias pscpu="ps auxf | sort -nr -k 3"
+alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
+
+## fastfetch - https://github.com/fastfetch-cli/fastfetch
+if command -v fastfetch >/dev/null 2>&1; then
+  alias neofetch="fastfetch"
+fi
+
+## Memory
+alias df="df -H"
+alias du="du -ch"
+alias du1="du --max-depth=1 | sort -h"
+alias du2="du --max-depth=2 | sort -h"
+alias meminfo="free -m -l -t"
+alias psmem="ps auxf | sort -nr -k 4"
+alias psmem10="ps auxf | sort -nr -k 4 | head -10"
+if [ -f /var/log/Xorg.0.log ]; then
+  alias gpumeminfo="grep -i --color memory /var/log/Xorg.0.log"
+fi
+
+## procs - https://github.com/dalance/procs
+if command -v procs >/dev/null 2>&1; then
+  alias ps="procs --tree"
+fi
+
+## Time
+alias now="date +'%T'"
+alias nowdate="date +'%d-%m-%Y'"

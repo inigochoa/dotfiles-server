@@ -1,0 +1,14 @@
+# ~/.bashrc.d/internet
+
+## Ping
+alias fastping="ping -c 100 -s 2"
+alias ping="ping -c 5"
+
+## Self
+alias hosts="sudo $EDITOR /etc/hosts"
+alias ip="curl https://ifconfig.co/"
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
+
+## Tools
+alias nmap="sudo -E nmap"
+alias wget="wget -c"
