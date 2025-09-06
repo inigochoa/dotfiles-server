@@ -82,7 +82,3 @@ fi
 
 ## Grep
 alias grep="grep --color=auto"
-
-## Personal scripts at ~/.scripts.d
-if [ -d ~/.scripts.d ]; then
-fi
