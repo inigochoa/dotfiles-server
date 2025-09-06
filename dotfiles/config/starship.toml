@@ -1,48 +1,122 @@
-add_newline = false
+#Location: ~/.config/starship.toml
+#What_is_starship: https://starship.rs/
 
-[[battery.display]] # 'bold red' style when capacity is between 0% and 15%
-threshold = 25
-style = 'bold red'
+add_newline = true
+command_timeout = 2000
 
-[[battery.display]] # 'bold yellow' style when capacity is between 15% and 40%
-threshold = 40
-style = 'bold yellow'
+format = """$env_var$os$username$hostname$kubernetes$directory$git_branch$git_status$python
+$character
+"""
 
 [character]
-error_symbol = "[✗](red)"
-success_symbol = "[➜](green)"
+success_symbol = "╰⎯"
+error_symbol = "╰⎯"
+# ╭╴ ╰─
 
-[cmd_duration]
-format = "took [$duration]($style)"
-min_time = 0
-style = "bright-blue"
-
-[directory]
-format = "[in](green) [$path]($style)[$read_only]($read_only_style) "
-style = "yellow"
-truncation_length = 2
-truncation_symbol = "…/"
-truncate_to_repo = false
-
-[git_branch]
-format = "\\([$branch]($style)\\) "
-style = "dimmed white"
-
-[git_commit]
-disabled = true
-
-[hostname]
-format = "[at](green) [$hostname]($style) "
-ssh_only = false
-style = "dimmed bright-purple"
-
-[memory_usage]
+[env_var]
+symbol = "╭╴"
+variable = 'SHELL'
+format = "$symbol"
 disabled = false
 
-[package]
+
+#warp-Drop ugly default prompt characters
+#success_symbol = ""
+#error_symbol = ""
+
+# ---
+
+[os]
+format = '[$symbol](bold white) '
+disabled = false
+
+[os.symbols]
+Windows = ' '
+Arch = '󰣇'
+Ubuntu = ''
+Macos = '󰀵'
+Unknown = '󰠥'
+
+# ---y
+
+# Shows the username
+[username]
+style_user = 'yellow bold'
+style_root = 'black bold'
+format = '[//](black bold) [$user](#2883ff) ' # 2883ff
+disabled = false
+show_always = true
+
+# Shows the hostname
+[hostname]
+ssh_only = false
+format = '[//](black bold) [$hostname](bold blue) '
+disabled = false
+
+# Shows current directory
+[directory]
+truncation_length = 0
+truncation_symbol = '…/'
+home_symbol = '~'
+# read_only_style = '197'
+read_only = '  '
+format = '[//](black bold) [$path]($style)[$read_only]($read_only_style) '
+style = '#7ed1fb' # yellow bold
+
+
+# Shows current git branch
+[git_branch]
+# symbol = ' '
+symbol = ' '
+format = '[//](black bold) [$symbol\[$branch\]]($style) '
+# truncation_length = 0
+# truncation_symbol = '…/'
+style = 'bold green'
+
+# Shows current git status
+[git_status]
+disabled = true
+format = '[ $all_status $ahead_behind]($style) '
+style = 'bold green'
+conflicted = '🏳'
+up_to_date = ''
+untracked = ' '
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+stashed = ' '
+modified = ' '
+staged = '[++\($count\)](green)'
+renamed = '襁 '
+deleted = ' '
+
+# Shows kubernetes context and namespace
+[kubernetes]
+format = 'via [󱃾 $context\($namespace\)](bold purple) '
+disabled = false
+
+# ---
+
+[vagrant]
 disabled = true
 
-[username]
-format = "[#](blue) [$user]($style) "
-show_always = true
-style_user = "cyan"
+[docker_context]
+disabled = true
+
+[helm]
+disabled = true
+
+[python]
+symbol = '󰌠'
+python_binary = ['./venv/bin/python', 'python', 'python3', 'python2']
+format = '[//](black bold) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style) '
+
+
+[nodejs]
+disabled = true
+
+[ruby]
+disabled = true
+
+[terraform]
+disabled = true
