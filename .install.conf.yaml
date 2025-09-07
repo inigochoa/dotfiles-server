@@ -29,6 +29,7 @@
         fd-find,
         fzf,
         git-delta,
+        lnav,
         onefetch,
         procs,
         zoxide

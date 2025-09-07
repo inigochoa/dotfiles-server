@@ -10,6 +10,11 @@ if ! command -v btm >/dev/null 2>&1; then
   sudo dnf copr enable atim/bottom -y
 fi
 
+## Enable lnav repository - https://lnav.org/
+if ! command -v lnav >/dev/null 2>&1; then
+  curl -s https://packagecloud.io/install/repositories/tstack/lnav/script.rpm.sh | sudo bash
+fi
+
 ## Enable onefetch repository - https://onefetch.dev/
 if ! command -v onefetch >/dev/null 2>&1; then
   sudo dnf copr enable varlad/onefetch -y

@@ -16,6 +16,7 @@ process.
 - [fastfetch]: A system info fetcher.
 - [fzf]: A command-line fuzzy finder.
 - [git-delta]: A syntax-highlighting pager for `git diffs`.
+- [lnav]: A log file viewer for the terminal.
 - [onefetch]: A tool to display repository information.
 - [procs]: A replacement for `ps`.
 - [starship]: A minimal, blazing-fast, and customizable prompt.
@@ -102,6 +103,7 @@ pull request. Let's keep these dotfiles evolving!
 [fastfetch]: https://github.com/fastfetch-cli/fastfetch
 [fzf]: https://github.com/junegunn/fzf
 [git-delta]: https://github.com/dandavison/delta
+[lnav]: https://lnav.org/
 [onefetch]: https://onefetch.dev/
 [procs]: https://github.com/dalance/procs
 [starship]: https://starship.rs/
