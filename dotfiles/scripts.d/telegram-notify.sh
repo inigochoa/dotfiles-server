@@ -16,10 +16,8 @@ if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
   exit 1
 fi
 
-MESSAGE=$(echo "$MESSAGE" | sed 's/\./\\./g' | sed 's/\-/\\-/g' | sed 's/\(/\\(/g' | sed 's/\)/\\)/g')
-
 curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-  -d "chat_id=$TELEGRAM_CHAT_ID" \
-  -d "text=$MESSAGE" \
-  -d "parse_mode=MarkdownV2" \
+  -d chat_id="$TELEGRAM_CHAT_ID" \
+  -d text="$1" \
+  -d parse_mode="HTML" \
   -d "disable_web_page_preview=true" > /dev/null 2>&1

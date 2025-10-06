@@ -8,19 +8,19 @@ else
   STATUS="$EMOJI Failed"
 fi
 
-MESSAGE="$EMOJI *Duplicati Backup Report* $EMOJI
----------------------------------
-*Status*: $STATUS
-*Task*: $DUPLICATI__BACKUP_NAME
-*Operation*: $DUPLICATI__OPERATIONNAME
-*Duration*: $DUPLICATI__DURATION
-
-_Completed: $(date)_"
+MESSAGE="$EMOJI <b>Duplicati Backup Report</b>
+━━━━━━━━━━━━━━━━
+📊 <b>Status:</b> $STATUS
+📦 <b>Task:</b> $DUPLICATI__BACKUP_NAME
+⚙️ <b>Operation:</b> $DUPLICATI__OPERATIONNAME
+⏱️ <b>Duration:</b> $DUPLICATI__DURATION"
 
 if [ -n "$DUPLICATI__ERROR_MESSAGE" ]; then
   MESSAGE="$MESSAGE
-
-*Error*: $DUPLICATI__ERROR_MESSAGE"
+🚨 <b>Error:</b> $DUPLICATI__ERROR_MESSAGE"
 fi
+
+MESSAGE="$MESSAGE
+⏰ $(date '+%Y-%m-%d %H:%M:%S')"
 
 ~/.scripts.d/telegram-notify.sh "${MESSAGE}"
